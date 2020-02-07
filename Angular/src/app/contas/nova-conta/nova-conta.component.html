@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <a class="navbar-brand mr-1" href="index.html">Administração Contábil</a>
+</nav>
+<div id="wrapper">
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/contas']">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Contas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span> Empresas</span></a>
+        </li>
+    </ul>
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/contas']">Contas</a>
+                </li>
+                <li class="breadcrumb-item active">Novo</li>
+            </ol>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-plus"></i> Adicionar Conta</div>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="criarConta(form.value)">
+                        <div class="form-group">
+                            <label for="descricao">Descrição da Conta</label>
+                            <input type="text" id="descricao" formControlName="descricao" class="form-control"
+                                placeholder="Informe a descrição">
+                        </div>
+                        <div class="form-group">
+                            <label for="numeroEstruturado">Número Estruturado</label>
+                            <input type="text" id="numeroEstruturado" formControlName="numeroEstruturado"
+                                class="form-control" placeholder="Ordinal numérico">
+                        </div>
+                        <div class="form-group">
+                            <label for="grupo">Grupo</label>
+                            <select formControlName="grupo" id="grupo" class="form-control">
+                                <option value="">Informe um Grupo</option>
+                                <option *ngFor="let grupo of grupos; let i = index" [value]="grupos[i].Value">
+                                    {{ grupo.Text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoConta">Tipo da Conta</label>
+                            <select formControlName="tipoConta" id="tipoConta" class="form-control">
+                                <option value="">Informe o tipo da conta</option>
+                                <option *ngFor="let tipoConta of tiposContas; let i = index"
+                                    [value]="tiposContas[i].Value">
+                                    {{ tipoConta.Text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <select formControlName="empresa" id="empresa" class="form-control">
+                                <option value="">Empresa Associada</option>
+                                <option *ngFor="let empresa of empresas; let i = index" [value]="empresas[i].Value">
+                                    {{ empresa.Text }}
+                                </option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Todos os direitos reservados © Adm. Contábil 2020</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
