@@ -27,8 +27,12 @@ namespace BankAPI.Controllers
 
             var contas = ((from a in _contexto.Conta select a).AsEnumerable().Select(t => new
             {
+                ID = t.ID,
                 Descricao = t.Descricao,
-                Grupo = Enum.GetName(typeof(Grupo), t.Grupo)
+                Empresa = t.Empresa,
+                TipoConta = Enum.GetName(typeof(TipoConta), t.TipoConta),
+                Grupo = Enum.GetName(typeof(Grupo), t.Grupo),
+                NumeroEstruturado = t.NumeroEstruturado
 
             }).ToList());
 
