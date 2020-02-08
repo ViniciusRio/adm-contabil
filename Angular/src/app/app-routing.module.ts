@@ -3,19 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NovaContaComponent } from './contas/nova-conta/nova-conta.component';
 import { ContasComponent } from './contas/contas.component';
 import { EmpresasComponent } from './empresas/empresas/empresas.component';
+import { NovaEmpresaComponent } from './empresas/nova-empresa/nova-empresa.component';
 
-
-// const routes: Routes = [
-//   {
-//     path: 'nova-conta',
-//     component: NovaContaComponent
-//   },
-//   {
-//     path: '',
-//     redirectTo: '/nova-conta',
-//     pathMatch: 'full'
-//   }
-// ];
 
 const routes: Routes = [
   {
@@ -35,6 +24,10 @@ const routes: Routes = [
   {
     path: 'empresas',
     component: EmpresasComponent
+  },
+  {
+    path: 'nova-empresa',
+    component: NovaEmpresaComponent,
   }
 ];
 

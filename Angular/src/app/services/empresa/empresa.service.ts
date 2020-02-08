@@ -9,6 +9,22 @@ export class EmpresaService {
 
   constructor(private http: HttpClient) { }
 
+
+  addEmpresa(razaoSocial: string) {
+    const url = `${environment.urlApi}/empresas`;
+    const arg = {
+      razaoSocial
+    }
+
+    return new Promise((resolve, reject) => {
+      this.http.post(url, arg).subscribe((data: any) => {
+        resolve(data);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
   getEmpresas() {
     const url = `${environment.urlApi}/empresas`;
     

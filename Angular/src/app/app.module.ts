@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContasComponent } from './contas/contas.component';
 import { EmpresasComponent } from './empresas/empresas/empresas.component';
+import { NovaEmpresaComponent } from './empresas/nova-empresa/nova-empresa.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EmpresasComponent } from './empresas/empresas/empresas.component';
     AppComponent,
     NovaContaComponent,
     ContasComponent,
-    EmpresasComponent
+    EmpresasComponent,
+    NovaEmpresaComponent
   ],
   imports: [
     BrowserModule,

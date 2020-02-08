@@ -4,27 +4,12 @@ import { ContaService } from '../../services/grupo/conta/conta.service';
 import { GrupoService } from 'src/app/services/grupo/grupo.service';
 import { EmpresaService } from 'src/app/services/empresa/empresa.service';
 
-class Conta {
-  descricaoConta: string;
-  numeroEstruturado: string;
-  grupo: number;
-  tipoConta: number;
-  empresa: number;
-
-  constructor(public descricao: string, numero: string, grupoConta: number, tipo: number, empresaId: number) {
-    this.descricaoConta = descricao;
-    this.numeroEstruturado = numero;
-    this.grupo = grupoConta;
-    this.tipoConta = tipo;
-    this.empresa = empresaId
-  }
-}
-
 @Component({
   selector: 'app-nova-conta',
   templateUrl: './nova-conta.component.html',
   styleUrls: ['./nova-conta.component.css']
 })
+
 export class NovaContaComponent implements OnInit {
   form;
   grupos;
@@ -47,12 +32,9 @@ export class NovaContaComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Enter in ngOnInit!");
-
     this.listarGrupos();
     this.listarTipoContas();
     this.listarEmpresas();
-
   }
 
   listarEmpresas() {
