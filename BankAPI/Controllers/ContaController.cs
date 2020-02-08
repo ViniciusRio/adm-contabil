@@ -36,36 +36,6 @@ namespace BankAPI.Controllers
 
             }).ToList());
 
-            //TODO: Colocar todos os campos como terno 
-
-            //var grupos = Enum.GetValues(typeof(Grupo)).Cast<Grupo>()
-            //.Select(r => new { Value = (int)r, Name = r.ToString() }).ToList();
-
-            //var contas = from conta in _contexto.Conta
-            //             select new { Descricao = conta.Descricao, Grupo = grupos.FirstOrDefault(p => p.Value == 0) };
-
-            //var contas = _contexto.Conta.Select(p => p.Grupo);
-            //List<dynamic> teste = new List<dynamic>();
-            //foreach (var item in grupos)
-            //{
-            //    teste.Add(from cont in _contexto.Conta
-            //              select new { Descricao = cont.Descricao, Grupo = item.Name });
-            //}
-           
-
-            //var contas = from c in _contexto.Conta
-            //             .Select(x => new
-            //             {
-            //                 Descricao = x.Descricao,
-            //                 NumeroEstruturado = x.NumeroEstruturado,
-            //                 Grupo = ((Grupo)x.Grupo).ToString(),
-            //                 TipoConta = x.TipoConta,
-            //                 Empresa = x.Empresa
-            //             })
-            //             select new { c.Descricao };
-
-            //var contas = _contexto.Conta.ToList();
-
             return contas;
 
         }

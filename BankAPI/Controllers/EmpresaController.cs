@@ -17,7 +17,7 @@ namespace BankAPI.Controllers
     {
         private BancoContexto _contexto = new BancoContexto();
 
-        [Route("api/empresa")]
+        [Route("api/empresas")]
         [HttpPost]
         public HttpResponseMessage Criar(JObject item)
         {
