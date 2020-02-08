@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContaService } from '../services/grupo/conta/conta.service';
+import { ContaService } from '../services/conta/conta.service';
 
 @Component({
   selector: 'app-contas',
@@ -12,13 +12,12 @@ export class ContasComponent implements OnInit {
   constructor(private contaService: ContaService) { }
 
   ngOnInit() {
-    this.getContas();
+    this.onListarContas();
   }
 
-  getContas() {
-    this.contaService.fetchContas().then(resultado => {
+  onListarContas() {
+    this.contaService.todasContas().then(resultado => {
       this.contas = resultado;
-      console.log("CONTAS: ", this.contas);
     });
   }
 

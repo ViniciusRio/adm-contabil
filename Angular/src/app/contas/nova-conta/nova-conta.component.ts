@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ContaService } from '../../services/grupo/conta/conta.service';
+import { FormBuilder } from '@angular/forms';
+import { ContaService } from '../../services/conta/conta.service';
 import { GrupoService } from 'src/app/services/grupo/grupo.service';
 import { EmpresaService } from 'src/app/services/empresa/empresa.service';
 
@@ -15,6 +15,7 @@ export class NovaContaComponent implements OnInit {
   grupos;
   tiposContas;
   empresas;
+  showMsg = false;
 
   constructor(
     private contaService: ContaService,
@@ -38,18 +39,18 @@ export class NovaContaComponent implements OnInit {
   }
 
   listarEmpresas() {
-    this.empresaService.getEmpresas().then(resultado => {
+    this.empresaService.todasEmpresas().then(resultado => {
       this.empresas = resultado;
     })
   }
 
   listarTipoContas() {
-    this.contaService.getTipoConta().then(resultado => {
+    this.contaService.tipoContas().then(resultado => {
       this.tiposContas = resultado;
     })
   }
   listarGrupos() {
-    this.grupoService.getGrupos().then(resultado => {
+    this.grupoService.todosGrupos().then(resultado => {
       this.grupos = resultado;
     })
   }
@@ -63,6 +64,7 @@ export class NovaContaComponent implements OnInit {
       this.form.value.empresa
     ).then(() => {
       this.form.reset();
+      this.showMsg = true;
     });
   }
 

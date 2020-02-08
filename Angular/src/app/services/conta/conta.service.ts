@@ -28,7 +28,7 @@ export class ContaService {
     });
   }
 
-  getTipoConta() {
+  tipoContas() {
     const url = `${environment.urlApi}/tipo-conta`;
     
     return new Promise((resolve, reject) => {
@@ -40,7 +40,7 @@ export class ContaService {
     });
   }
 
-  fetchContas() {
+  todasContas() {
     const url = `${environment.urlApi}/contas`;
 
     return new Promise((resolve, reject) => {

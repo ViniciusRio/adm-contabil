@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { EmpresaService } from 'src/app/services/empresa/empresa.service';
+import { LancamentoContabilService } from 'src/app/services/lancamento-contabil/lancamento-contabil.service';
 import { FormBuilder } from '@angular/forms';
 import {
   NgbCalendar,
@@ -7,6 +7,7 @@ import {
   NgbDateStruct,
   NgbDateParserFormatter
 } from '@ng-bootstrap/ng-bootstrap';
+
 
 /**
  * This Service handles how the date is represented in scripts i.e. ngModel.
@@ -69,40 +70,42 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 }
 
 @Component({
-  selector: 'app-nova-empresa',
-  templateUrl: './nova-empresa.component.html',
-  styleUrls: ['./nova-empresa.component.css'],
+  selector: 'app-novo-lancamento-contabil',
+  templateUrl: './novo-lancamento-contabil.component.html',
+  styleUrls: ['./novo-lancamento-contabil.component.css'],
 
-  // NOTE: For this example we are only providing current component, but probably
-  // NOTE: you will want to provide your main App Module
   providers: [
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ]
+
 })
-export class NovaEmpresaComponent implements OnInit {
+export class NovoLancamentoContabilComponent implements OnInit {
   form;
-  showMsg = false;
+  model;
   model1: string;
   model2: string;
+  showMsg = false;
 
   constructor(
-    private empresaService: EmpresaService,
+    private lancamentoService: LancamentoContabilService,
     private formBuilder: FormBuilder,
     private ngbCalendar: NgbCalendar,
-    private dateAdapter: NgbDateAdapter<string>
-  ) { 
+     private dateAdapter: NgbDateAdapter<string>
+  ){ 
     this.form = this.formBuilder.group({
-      razaoSocial: '',
+      data: '',
+      historico: ''
     });
   }
 
   ngOnInit() {
   }
 
-  criarEmpresa() {
-    this.empresaService.addEmpresa(
-      this.form.value.razaoSocial
+  criarLancamento() {
+    this.lancamentoService.addLancamento(
+      this.form.value.data,
+      this.form.value.historico
     ).then(() => {
       this.form.reset();
       this.showMsg = true;

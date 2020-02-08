@@ -9,7 +9,7 @@ export class GrupoService {
 
   constructor(private http: HttpClient) { }
 
-  getGrupos() {
+  todosGrupos() {
     const url = `${environment.urlApi}/grupos`;
     
     return new Promise((resolve, reject) => {
