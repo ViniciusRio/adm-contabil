@@ -9,14 +9,15 @@ export class ContaService {
 
   constructor(private http: HttpClient) { }
 
-  addConta(Descricao: string, NumeroEstruturado: string, Grupo: number, TipoConta: number, EmpresaID: number) {
+  addConta(Descricao: string, NumeroEstruturado: string, Grupo: number, TipoConta: number, EmpresaID: number, ContaPai_ID: number) {
     const url = `${environment.urlApi}/contas`;
     const arg = {
       Descricao,
       NumeroEstruturado,
       Grupo,
       TipoConta, 
-      EmpresaID
+      EmpresaID,
+      ContaPai_ID
     }
 
     return new Promise((resolve, reject) => {
@@ -42,6 +43,18 @@ export class ContaService {
 
   todasContas() {
     const url = `${environment.urlApi}/contas`;
+
+    return new Promise((resolve, reject) => {
+      this.http.get(url).subscribe((data: any) => {
+        resolve(data);
+      }, (err) => {
+        reject(err);
+      })
+    })
+  }
+
+  contaPai() {
+    const url = `${environment.urlApi}/conta-pai`;
 
     return new Promise((resolve, reject) => {
       this.http.get(url).subscribe((data: any) => {

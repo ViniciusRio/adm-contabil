@@ -40,15 +40,15 @@
                         <div class="form-group">
                             <p>Informe uma Data</p>
                             <div class="input-group">
-                                <input class="form-control" placeholder="dd/mm/aaaa"
-                                       name="d2" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker" formControlName="data" >
+                                <input class="form-control" placeholder="dd/mm/aaaa" name="d2" [(ngModel)]="model2"
+                                    ngbDatepicker #d2="ngbDatepicker" formControlName="data">
                                 <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+                                    <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button"><i
+                                            class="far fa-calendar-alt"></i></button>
                                 </div>
-                              </div>
-
-                          </div>
-                          <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="historico">Histórico</label>
                             <input type="text" id="historico" formControlName="historico" class="form-control"
                                 placeholder="Histórico contábil">

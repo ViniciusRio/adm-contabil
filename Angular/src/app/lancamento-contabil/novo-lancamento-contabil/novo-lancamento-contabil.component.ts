@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { LancamentoContabilService } from 'src/app/services/lancamento-contabil/lancamento-contabil.service';
 import { FormBuilder } from '@angular/forms';
+import * as moment from 'moment';
 import {
   NgbCalendar,
   NgbDateAdapter,
@@ -87,6 +88,7 @@ export class NovoLancamentoContabilComponent implements OnInit {
   model2: string;
   showMsg = false;
 
+
   constructor(
     private lancamentoService: LancamentoContabilService,
     private formBuilder: FormBuilder,
@@ -104,7 +106,7 @@ export class NovoLancamentoContabilComponent implements OnInit {
 
   criarLancamento() {
     this.lancamentoService.addLancamento(
-      this.form.value.data,
+      moment(this.form.value.data, "DD-MM-YYYY").format("YYYY-MM-DD"),
       this.form.value.historico
     ).then(() => {
       this.form.reset();

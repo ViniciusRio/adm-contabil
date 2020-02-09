@@ -43,6 +43,8 @@
                                     <th>Tipo da conta</th>
                                     <th>Grupo</th>
                                     <th>N° Estruturado</th>
+                                    <th>Conta referência</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +55,8 @@
                                     <td>{{ conta.TipoConta }}</td>
                                     <td>{{ conta.Grupo }}</td>
                                     <td>{{ conta.NumeroEstruturado }}</td>
+                                    <td>{{ conta.ContaPai && conta.ContaPai || '-' }}</td>
+
                                 </tr>
                             </tbody>
                         </table>

@@ -66,6 +66,16 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="tipoConta">Conta referência</label>
+                            <select formControlName="contaPai" id="contaPai" class="form-control">
+                                <option value="">Informe a conta referência</option>
+                                <option *ngFor="let contaPai of contasPai; let i = index"
+                                    [value]="contasPai[i].Value">
+                                    {{ contaPai.Text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="empresa">Empresa</label>
                             <select formControlName="empresa" id="empresa" class="form-control">
                                 <option value="">Empresa Associada</option>

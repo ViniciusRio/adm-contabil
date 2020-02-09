@@ -9,7 +9,7 @@ export class LancamentoContabilService {
 
   constructor(private http: HttpClient) { }
 
-  addLancamento(data: Date, historico: string) {
+  addLancamento(data: string, historico: string) {
     const url = `${environment.urlApi}/lancamentos`;
     const arg = {
       data,

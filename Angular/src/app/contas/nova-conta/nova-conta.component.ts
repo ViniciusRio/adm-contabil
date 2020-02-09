@@ -15,6 +15,7 @@ export class NovaContaComponent implements OnInit {
   grupos;
   tiposContas;
   empresas;
+  contasPai
   showMsg = false;
 
   constructor(
@@ -28,7 +29,8 @@ export class NovaContaComponent implements OnInit {
       numeroEstruturado: '',
       grupo: [''],
       tipoConta: [''],
-      empresa: ['']
+      empresa: [''],
+      contaPai: ['']
     });
   }
 
@@ -36,6 +38,13 @@ export class NovaContaComponent implements OnInit {
     this.listarGrupos();
     this.listarTipoContas();
     this.listarEmpresas();
+    this.listarContasPai();
+  }
+
+  listarContasPai() {
+    this.contaService.contaPai().then(resultado => {
+      this.contasPai = resultado;
+    })
   }
 
   listarEmpresas() {
@@ -61,7 +70,9 @@ export class NovaContaComponent implements OnInit {
       this.form.value.numeroEstruturado,
       this.form.value.grupo,
       this.form.value.tipoConta,
-      this.form.value.empresa
+      this.form.value.empresa,
+      this.form.value.contaPai
+
     ).then(() => {
       this.form.reset();
       this.showMsg = true;
