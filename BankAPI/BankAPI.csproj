@@ -211,14 +211,15 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LancamentoAnaliticoController.cs" />
     <Compile Include="Controllers\LancamentoContabilController.cs" />
     <Compile Include="Data\BancoContexto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002090239223_initial.cs" />
-    <Compile Include="Migrations\202002090239223_initial.designer.cs">
-      <DependentUpon>202002090239223_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202002091945019_initial.cs" />
+    <Compile Include="Migrations\202002091945019_initial.designer.cs">
+      <DependentUpon>202002091945019_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Conta.cs" />
@@ -305,8 +306,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002090239223_initial.resx">
-      <DependentUpon>202002090239223_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002091945019_initial.resx">
+      <DependentUpon>202002091945019_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

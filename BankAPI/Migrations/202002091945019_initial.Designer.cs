@@ -13,7 +13,7 @@ namespace BankAPI.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202002090239223_initial"; }
+            get { return "202002091945019_initial"; }
         }
         
         string IMigrationMetadata.Source

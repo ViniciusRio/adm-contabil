@@ -35,19 +35,19 @@
                 .PrimaryKey(t => t.EmpresaID);
             
             CreateTable(
-                "dbo.LacamentoAnalitico",
+                "dbo.LancamentoAnalitico",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        LancamentoAnaliticoID = c.Int(nullable: false),
-                        ContaAnaliticaID = c.Int(nullable: false),
                         Valor = c.Double(nullable: false),
                         Tipo = c.String(),
+                        LancamentoContabilID = c.Int(nullable: false),
+                        ContaAnaliticaID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.ContaAnalitica", t => t.ContaAnaliticaID)
-                .ForeignKey("dbo.LancamentoContabil", t => t.LancamentoAnaliticoID, cascadeDelete: true)
-                .Index(t => t.LancamentoAnaliticoID)
+                .ForeignKey("dbo.LancamentoContabil", t => t.LancamentoContabilID, cascadeDelete: true)
+                .Index(t => t.LancamentoContabilID)
                 .Index(t => t.ContaAnaliticaID);
             
             CreateTable(
@@ -87,20 +87,20 @@
         {
             DropForeignKey("dbo.ContaSintetica", "ID", "dbo.Conta");
             DropForeignKey("dbo.ContaAnalitica", "ID", "dbo.Conta");
-            DropForeignKey("dbo.LacamentoAnalitico", "LancamentoAnaliticoID", "dbo.LancamentoContabil");
-            DropForeignKey("dbo.LacamentoAnalitico", "ContaAnaliticaID", "dbo.ContaAnalitica");
+            DropForeignKey("dbo.LancamentoAnalitico", "LancamentoContabilID", "dbo.LancamentoContabil");
+            DropForeignKey("dbo.LancamentoAnalitico", "ContaAnaliticaID", "dbo.ContaAnalitica");
             DropForeignKey("dbo.Conta", "EmpresaID", "dbo.Empresa");
             DropForeignKey("dbo.Conta", "ContaPai_ID", "dbo.Conta");
             DropIndex("dbo.ContaSintetica", new[] { "ID" });
             DropIndex("dbo.ContaAnalitica", new[] { "ID" });
-            DropIndex("dbo.LacamentoAnalitico", new[] { "ContaAnaliticaID" });
-            DropIndex("dbo.LacamentoAnalitico", new[] { "LancamentoAnaliticoID" });
+            DropIndex("dbo.LancamentoAnalitico", new[] { "ContaAnaliticaID" });
+            DropIndex("dbo.LancamentoAnalitico", new[] { "LancamentoContabilID" });
             DropIndex("dbo.Conta", new[] { "ContaPai_ID" });
             DropIndex("dbo.Conta", new[] { "EmpresaID" });
             DropTable("dbo.ContaSintetica");
             DropTable("dbo.ContaAnalitica");
             DropTable("dbo.LancamentoContabil");
-            DropTable("dbo.LacamentoAnalitico");
+            DropTable("dbo.LancamentoAnalitico");
             DropTable("dbo.Empresa");
             DropTable("dbo.Conta");
         }

@@ -10,13 +10,26 @@ namespace Bank.Models
     public class LancamentoAnalitico
     {
         public int ID { get; set; }
-        public int LancamentoAnaliticoID { get; set; }
-        public int ContaAnaliticaID { get; set; }
         public double Valor { get; set; }
         public string Tipo { get; set; }
-        [ForeignKey("LancamentoAnaliticoID")]
-        public LancamentoContabil LancamentoContabil { get; set; }
+        public int LancamentoContabilID { get; set; }
+        [ForeignKey("LancamentoContabilID")]
+        public virtual LancamentoContabil LancamentoContabil { get; set; }
+        public int ContaAnaliticaID { get; set; }
         [ForeignKey("ContaAnaliticaID")]
-        public ContaAnalitica ContaAnalitica { get; set; }
+        public virtual ContaAnalitica ContaAnalitica { get; set; }
+
+        public LancamentoAnalitico()
+        {
+        }
+
+        public LancamentoAnalitico(int iD, double valor, string tipo, int lancamentoContabilID, int contaAnaliticaID)
+        {
+            ID = iD;
+            Valor = valor;
+            Tipo = tipo;
+            LancamentoContabilID = lancamentoContabilID;
+            ContaAnaliticaID = contaAnaliticaID;
+        }
     }
 }

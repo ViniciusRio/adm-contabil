@@ -12,7 +12,7 @@ namespace Bank.Models
         [DataType(DataType.Date)]
         public DateTime Data { get; set; }
         public string Historico { get; set; }
-        public ICollection<LancamentoAnalitico> LancamentosAnaliticos { get; set; }
+        public virtual ICollection<LancamentoAnalitico> LancamentosAnaliticos { get; set; }
 
         public LancamentoContabil()
         {
