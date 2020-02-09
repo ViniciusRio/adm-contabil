@@ -34,7 +34,7 @@
                     <i class="fas fa-table"></i> Lançamentos cadastrados</div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <!-- <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -43,14 +43,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let conta of contas">
+                                <tr *ngFor="let lancamento of lancamentos">
                                     <td>{{lancamento.ID }}</td>
-                                    <td>{{ lancamento.Date }}</td>
+                                    <td>{{ converterData(lancamento.Data) }}</td>
                                     <td>{{ lancamento.Historico }}</td>
                                    
                                 </tr>
                             </tbody>
-                        </table> -->
+                        </table>
                     </div>
                 </div>
             </div>
