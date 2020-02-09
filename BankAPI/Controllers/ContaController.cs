@@ -32,7 +32,8 @@ namespace BankAPI.Controllers
                 Empresa = t.Empresa,
                 TipoConta = Enum.GetName(typeof(TipoConta), t.TipoConta),
                 Grupo = Enum.GetName(typeof(Grupo), t.Grupo),
-                NumeroEstruturado = t.NumeroEstruturado
+                NumeroEstruturado = t.NumeroEstruturado,
+                ContaPai = t.ContaPai == null ? null : t.ContaPai.Descricao
 
             }).ToList());
 
@@ -98,6 +99,20 @@ namespace BankAPI.Controllers
             foreach (var item in tipoContaValor.Zip(tipoContaNome, (a, b) => new { A = a, B = b }))
             {
                 selectLista.Add(new SelectListItem { Value = item.A.ToString(), Text = item.B });
+            }
+
+            return selectLista;
+
+        }
+
+        [Route("api/conta-pai")]
+        [HttpGet]
+        public List<SelectListItem> ContaPai()
+        {
+            List<SelectListItem> selectLista = new List<SelectListItem>();
+            foreach (var item in _contexto.Conta)
+            {
+                selectLista.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Descricao });
             }
 
             return selectLista;
