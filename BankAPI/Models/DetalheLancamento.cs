@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Bank.Models
 {
-    public class LancamentoAnalitico
+    public class DetalheLancamento
     {
         public int ID { get; set; }
         public double Valor { get; set; }
@@ -19,11 +19,11 @@ namespace Bank.Models
         [ForeignKey("ContaAnaliticaID")]
         public virtual ContaAnalitica ContaAnalitica { get; set; }
 
-        public LancamentoAnalitico()
+        public DetalheLancamento()
         {
         }
 
-        public LancamentoAnalitico(int iD, double valor, string tipo, int lancamentoContabilID, int contaAnaliticaID)
+        public DetalheLancamento(int iD, double valor, string tipo, int lancamentoContabilID, int contaAnaliticaID)
         {
             ID = iD;
             Valor = valor;

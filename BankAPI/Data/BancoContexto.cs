@@ -19,9 +19,7 @@ namespace Bank.Data
         public DbSet<Bank.Models.ContaAnalitica> ContaAnalitica { get; set; }
         public DbSet<Bank.Models.Empresa> Empresa { get; set; }
         public DbSet<Bank.Models.LancamentoContabil> LancamentoContabil { get; set; }
-        public DbSet<Bank.Models.LancamentoAnalitico> LancamentoAnalitico { get; set; }
-
-
+        public DbSet<Bank.Models.DetalheLancamento> DetalheLancamento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,17 +28,8 @@ namespace Bank.Data
             modelBuilder.Entity<ContaAnalitica>().ToTable("ContaAnalitica");
             modelBuilder.Entity<Empresa>().ToTable("Empresa");
             modelBuilder.Entity<LancamentoContabil>().ToTable("LancamentoContabil");
-            modelBuilder.Entity<LancamentoAnalitico>().ToTable("LancamentoAnalitico");
+            modelBuilder.Entity<DetalheLancamento>().ToTable("DetalheLancamento");
 
-            //modelBuilder.Entity<LancamentoContabil>()
-            //    .HasMany(a => a.LancamentosAnaliticos)
-            //    .WithMany(b => b.LancamentoContabil)
-            //    .Map(lc =>
-            //    {
-            //        lc.MapLeftKey("LancamentoAnaliticoID");
-            //        lc.MapRightKey("ContaAnaliticaID");
-            //        lc.ToTable("LacamentoAnaliticos");
-            //    });
         }
     }
 }

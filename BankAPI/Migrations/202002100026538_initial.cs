@@ -35,7 +35,7 @@
                 .PrimaryKey(t => t.EmpresaID);
             
             CreateTable(
-                "dbo.LancamentoAnalitico",
+                "dbo.DetalheLancamento",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -87,20 +87,20 @@
         {
             DropForeignKey("dbo.ContaSintetica", "ID", "dbo.Conta");
             DropForeignKey("dbo.ContaAnalitica", "ID", "dbo.Conta");
-            DropForeignKey("dbo.LancamentoAnalitico", "LancamentoContabilID", "dbo.LancamentoContabil");
-            DropForeignKey("dbo.LancamentoAnalitico", "ContaAnaliticaID", "dbo.ContaAnalitica");
+            DropForeignKey("dbo.DetalheLancamento", "LancamentoContabilID", "dbo.LancamentoContabil");
+            DropForeignKey("dbo.DetalheLancamento", "ContaAnaliticaID", "dbo.ContaAnalitica");
             DropForeignKey("dbo.Conta", "EmpresaID", "dbo.Empresa");
             DropForeignKey("dbo.Conta", "ContaPai_ID", "dbo.Conta");
             DropIndex("dbo.ContaSintetica", new[] { "ID" });
             DropIndex("dbo.ContaAnalitica", new[] { "ID" });
-            DropIndex("dbo.LancamentoAnalitico", new[] { "ContaAnaliticaID" });
-            DropIndex("dbo.LancamentoAnalitico", new[] { "LancamentoContabilID" });
+            DropIndex("dbo.DetalheLancamento", new[] { "ContaAnaliticaID" });
+            DropIndex("dbo.DetalheLancamento", new[] { "LancamentoContabilID" });
             DropIndex("dbo.Conta", new[] { "ContaPai_ID" });
             DropIndex("dbo.Conta", new[] { "EmpresaID" });
             DropTable("dbo.ContaSintetica");
             DropTable("dbo.ContaAnalitica");
             DropTable("dbo.LancamentoContabil");
-            DropTable("dbo.LancamentoAnalitico");
+            DropTable("dbo.DetalheLancamento");
             DropTable("dbo.Empresa");
             DropTable("dbo.Conta");
         }

@@ -9,7 +9,7 @@ namespace Bank.Models
 {
     public class ContaAnalitica : Conta
     {
-        public ICollection<LancamentoAnalitico> LancamentosAnaliticos { get; set; }
+        public ICollection<DetalheLancamento> DetalhesLancamento { get; set; }
 
 
         public ContaAnalitica()

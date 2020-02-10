@@ -118,5 +118,19 @@ namespace BankAPI.Controllers
             return selectLista;
 
         }
+
+        [Route("api/contas-analiticas")]
+        [HttpGet]
+        public List<SelectListItem> ContasAnaliticas()
+        {
+            List<SelectListItem> selectLista = new List<SelectListItem>();
+            foreach (var item in _contexto.ContaAnalitica)
+            {
+                selectLista.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Descricao });
+            }
+
+            return selectLista;
+
+        }
     }
 }

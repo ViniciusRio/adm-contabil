@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.WebPages.Html;
+
 
 namespace BankAPI.Controllers
 {
@@ -40,6 +42,20 @@ namespace BankAPI.Controllers
                               select new { lancamento.ID, lancamento.Data, lancamento.Historico };
 
             return lancamentos;
+
+        }
+
+        [Route("api/lancamentos-contabeis")]
+        [HttpGet]
+        public List<SelectListItem> LancamentosContabeis()
+        {
+            List<SelectListItem> selectLista = new List<SelectListItem>();
+            foreach (var item in _contexto.LancamentoContabil)
+            {
+                selectLista.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Historico });
+            }
+
+            return selectLista;
 
         }
     }

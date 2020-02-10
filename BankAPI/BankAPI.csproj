@@ -211,15 +211,15 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LancamentoAnaliticoController.cs" />
+    <Compile Include="Controllers\DetalheLancamentoController.cs" />
     <Compile Include="Controllers\LancamentoContabilController.cs" />
     <Compile Include="Data\BancoContexto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002091945019_initial.cs" />
-    <Compile Include="Migrations\202002091945019_initial.designer.cs">
-      <DependentUpon>202002091945019_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202002100026538_initial.cs" />
+    <Compile Include="Migrations\202002100026538_initial.designer.cs">
+      <DependentUpon>202002100026538_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Conta.cs" />
@@ -229,7 +229,7 @@
     <Compile Include="Models\Enums\Grupo.cs" />
     <Compile Include="Models\Enums\TipoConta.cs" />
     <Compile Include="Models\ForeiynKey.cs" />
-    <Compile Include="Models\LancamentoAnalitico.cs" />
+    <Compile Include="Models\DetalheLancamento.cs" />
     <Compile Include="Models\LancamentoContabil.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -306,8 +306,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002091945019_initial.resx">
-      <DependentUpon>202002091945019_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002100026538_initial.resx">
+      <DependentUpon>202002100026538_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
