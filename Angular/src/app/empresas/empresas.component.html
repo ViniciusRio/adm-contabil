@@ -38,21 +38,34 @@
                     <a [routerLink] = "['/nova-empresa']" class="btn btn-success float-right"><i class="fas fa-plus"></i> Adicionar</a>
                     <i class="fas fa-table"></i> Empresas cadastradas</div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Razão Social</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let empresa of empresas">
-                                    <td>{{ empresa.Value }}</td>
-                                    <td>{{ empresa.Text }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div *ngIf="!empresas || empresas.length <= 0">
+                        <div class="alert alert-info" role="alert">
+                            Nenhuma empresa cadastrada.
+                          </div>
+                    </div>
+                    <div *ngIf="empresas.length > 0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Razão Social</th>
+                                        <th colspan="2"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let empresa of empresas">
+                                        <td>{{ empresa.Value }}</td>
+                                        <td>{{ empresa.Text }}</td>
+                                        <td>
+                                            <form>
+                                                <button type="submit" (click)="onDeletarEmpresa(empresa.Value)" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContasComponent } from './contas.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
-describe('ContasComponent', () => {
-  let component: ContasComponent;
-  let fixture: ComponentFixture<ContasComponent>;
+describe('ConfirmationDialogComponent', () => {
+  let component: ConfirmationDialogComponent;
+  let fixture: ComponentFixture<ConfirmationDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContasComponent ]
+      declarations: [ ConfirmationDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContasComponent);
+    fixture = TestBed.createComponent(ConfirmationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,8 +22,4 @@ describe('ContasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('cannot be empty', () => {
-    expect(component.contas).toBeGreaterThan(1);
-  })
 });

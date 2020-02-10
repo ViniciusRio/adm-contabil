@@ -4,7 +4,7 @@
 <div id="wrapper">
     <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" >
+            <a class="nav-link" [routerLink]="['/contas']">
                 <i class="fas fa-file-invoice"></i>
                 <span> Contas</span>
             </a>
@@ -39,32 +39,41 @@
                     <i class="fas fa-table"></i> Contas cadastradas</div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Descrição</th>
-                                    <th>Empresa</th>
-                                    <th>Tipo da conta</th>
-                                    <th>Grupo</th>
-                                    <th>N° Estruturado</th>
-                                    <th>Conta referência</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let conta of contas">
-                                    <td>{{conta.ID}}</td>
-                                    <td>{{ conta.Descricao }}</td>
-                                    <td>{{ conta.Empresa.RazaoSocial }}</td>
-                                    <td>{{ conta.TipoConta }}</td>
-                                    <td>{{ conta.Grupo }}</td>
-                                    <td>{{ conta.NumeroEstruturado }}</td>
-                                    <td>{{ conta.ContaPai && conta.ContaPai || '-' }}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div *ngIf="!contas || contas.length <= 0">
+                            <div class="alert alert-info" role="alert">
+                                Nenhuma conta cadastrada.
+                              </div>
+                        </div>
+                        <div *ngIf="contas.length > 0">
+                            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Descrição</th>
+                                        <th>Empresa</th>
+                                        <th>Tipo da conta</th>
+                                        <th>Grupo</th>
+                                        <th>N° Estruturado</th>
+                                        <th colspan="2">Conta referência</th>
+    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let conta of contas">
+                                        <td>{{conta.ID}}</td>
+                                        <td>{{ conta.Descricao }}</td>
+                                        <td>{{ conta.Empresa.RazaoSocial }}</td>
+                                        <td>{{ conta.TipoConta }}</td>
+                                        <td>{{ conta.Grupo }}</td>
+                                        <td>{{ conta.NumeroEstruturado }}</td>
+                                        <td>{{ conta.ContaPai && conta.ContaPai || '-' }}</td>
+                                        <td>
+                                            <button type="submit" (click)="onDeletarConta(conta.ID)" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

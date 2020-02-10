@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { NovaContaComponent } from './nova-conta.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('NovaContaComponent', () => {
   let component: NovaContaComponent;
@@ -8,6 +10,10 @@ describe('NovaContaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule
+      ],
       declarations: [ NovaContaComponent ]
     })
     .compileComponents();

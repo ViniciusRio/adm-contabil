@@ -10,6 +10,18 @@ export class ContaService {
 
   constructor(private http: HttpClient) { }
 
+  deletarConta(id) {
+    const url = `${environment.urlApi}/conta/${id}/delete`;
+
+    return new Promise((resolve, reject) => {
+      this.http.delete(url).subscribe((data: any) => {
+        resolve(data);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
   addConta(conta: Conta) {
     const url = `${environment.urlApi}/contas`;
     const arg = {

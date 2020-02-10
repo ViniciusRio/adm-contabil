@@ -14,6 +14,8 @@ import { NovoLancamentoContabilComponent } from './lancamento-contabil/novo-lanc
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lancamento.component';
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detal
     NovoLancamentoContabilComponent,
     DetalhesLancamentoComponent,
     NovoDetalheLancamentoComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detal
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ConfirmationDialogService],
+  bootstrap: [AppComponent],
+  entryComponents: [ ConfirmationDialogComponent ]
+
 })
 export class AppModule { }
