@@ -65,15 +65,16 @@ export class NovaContaComponent implements OnInit {
   }
 
   criarConta() {
-    this.contaService.addConta(
-      this.form.value.descricao,
-      this.form.value.numeroEstruturado,
-      this.form.value.grupo,
-      this.form.value.tipoConta,
-      this.form.value.empresa,
-      this.form.value.contaPai
+    const conta = {
+      Descricao: this.form.value.descricao,
+      NumeroEstruturado: this.form.value.numeroEstruturado,
+      Grupo: this.form.value.grupo,
+      TipoConta: this.form.value.tipoConta,
+      EmpresaID: this.form.value.empresa,
+      ContaPai_ID: this.form.value.contaPai
+    }
 
-    ).then(() => {
+    this.contaService.addConta(conta).then(() => {
       this.form.reset();
       this.showMsg = true;
     });

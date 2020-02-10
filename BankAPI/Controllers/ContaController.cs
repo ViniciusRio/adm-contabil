@@ -46,7 +46,7 @@ namespace BankAPI.Controllers
         public HttpResponseMessage Create(JObject item)
         {
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "Criado com sucesso");
-            ContaAnalitica conta = JsonConvert.DeserializeObject<ContaAnalitica>(item.ToString());
+            ContaAnalitica conta = JsonConvert.DeserializeObject<ContaAnalitica>(item["conta"].ToString());
 
             if (conta.TipoConta == 0)
             {

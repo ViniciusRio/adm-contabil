@@ -19,7 +19,7 @@ namespace BankAPI.Controllers
 
         [Route("api/empresas")]
         [HttpPost]
-        public HttpResponseMessage Criar(JObject item)
+        public HttpResponseMessage Create(JObject item)
         {
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
             Empresa empresa = JsonConvert.DeserializeObject<Empresa>(item.ToString());

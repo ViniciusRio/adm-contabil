@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Conta } from 'src/app/contas/conta';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,10 @@ export class ContaService {
 
   constructor(private http: HttpClient) { }
 
-  addConta(Descricao: string, NumeroEstruturado: string, Grupo: number, TipoConta: number, EmpresaID: number, ContaPai_ID: number) {
+  addConta(conta: Conta) {
     const url = `${environment.urlApi}/contas`;
     const arg = {
-      Descricao,
-      NumeroEstruturado,
-      Grupo,
-      TipoConta,
-      EmpresaID,
-      ContaPai_ID
+      conta
     }
 
     return new Promise((resolve, reject) => {
