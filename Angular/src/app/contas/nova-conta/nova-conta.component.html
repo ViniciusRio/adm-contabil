@@ -34,8 +34,8 @@
                 <li class="breadcrumb-item active">Novo</li>
             </ol>
             <div *ngIf="showMsg" class="alert alert-success" role="alert">
-                Conta adicionada com sucesso. Ir para <a routerLink="/contas">listagem</a>    
-              </div>
+                Conta adicionada com sucesso. Ir para <a routerLink="/contas">listagem</a>
+            </div>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-plus"></i> Adicionar Conta</div>
@@ -74,8 +74,7 @@
                             <label for="tipoConta">Conta referência</label>
                             <select formControlName="contaPai" id="contaPai" class="form-control">
                                 <option value="">Informe a conta referência</option>
-                                <option *ngFor="let contaPai of contasPai; let i = index"
-                                    [value]="contasPai[i].Value">
+                                <option *ngFor="let contaPai of contasPai; let i = index" [value]="contasPai[i].Value">
                                     {{ contaPai.Text }}
                                 </option>
                             </select>

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LancamentoContabilComponent } from './lancamento-contabil.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('LancamentoContabilComponent', () => {
   let component: LancamentoContabilComponent;
@@ -8,7 +9,8 @@ describe('LancamentoContabilComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LancamentoContabilComponent ]
+      declarations: [ LancamentoContabilComponent ],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
   }));

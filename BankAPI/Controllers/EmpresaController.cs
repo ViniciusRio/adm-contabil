@@ -61,6 +61,12 @@ namespace BankAPI.Controllers
 
             }
 
+
+            foreach (var itemConta in _contexto.Conta.Where(f => f.EmpresaID == item.EmpresaID))
+            {
+                _contexto.Conta.Remove(itemConta);
+            }
+
             _contexto.Empresa.Remove(item);
             _contexto.SaveChanges();
 

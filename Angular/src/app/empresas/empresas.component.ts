@@ -18,7 +18,7 @@ export class EmpresasComponent implements OnInit {
     this.listarEmpresas();
   }
   onDeletarEmpresa(id) {
-    this.confirmationDialogService.confirm('Deseja realmente excluir?', 'Ação não poderá ser desfeita.')
+    this.confirmationDialogService.confirm('Deseja realmente excluir?', 'Contas associadas também serão Ação não poderá ser desfeita.')
     .then(() => {
       this.empresaService.deletarEmpresa(id).then(() => {
         this.listarEmpresas();

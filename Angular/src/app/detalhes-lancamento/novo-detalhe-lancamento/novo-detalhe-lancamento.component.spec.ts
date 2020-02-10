@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NovoDetalheLancamentoComponent } from './novo-detalhe-lancamento.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('NovoDetalheLancamentoComponent', () => {
   let component: NovoDetalheLancamentoComponent;
@@ -8,7 +10,11 @@ describe('NovoDetalheLancamentoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NovoDetalheLancamentoComponent ]
+      declarations: [ NovoDetalheLancamentoComponent ],
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));

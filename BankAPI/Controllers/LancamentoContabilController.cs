@@ -58,5 +58,25 @@ namespace BankAPI.Controllers
             return selectLista;
 
         }
+
+        [Route("api/lancamento/{id}/delete")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            var item = _contexto.LancamentoContabil.FirstOrDefault(lancamento => lancamento.ID == id);
+
+            if (item == null)
+            {
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound, "Lançamento Contábil não encontrada");
+
+                return response;
+
+            }
+
+            _contexto.LancamentoContabil.Remove(item);
+            _contexto.SaveChanges();
+
+            return Request.CreateResponse(HttpStatusCode.OK, "Lançamento excluído");
+        }
     }
 }

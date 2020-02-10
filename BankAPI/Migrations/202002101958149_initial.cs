@@ -45,7 +45,7 @@
                         ContaAnaliticaID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.ContaAnalitica", t => t.ContaAnaliticaID)
+                .ForeignKey("dbo.ContaAnalitica", t => t.ContaAnaliticaID, cascadeDelete: true)
                 .ForeignKey("dbo.LancamentoContabil", t => t.LancamentoContabilID, cascadeDelete: true)
                 .Index(t => t.LancamentoContabilID)
                 .Index(t => t.ContaAnaliticaID);

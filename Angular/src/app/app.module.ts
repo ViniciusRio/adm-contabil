@@ -11,7 +11,7 @@ import { EmpresasComponent } from './empresas/empresas.component';
 import { NovaEmpresaComponent } from './empresas/nova-empresa/nova-empresa.component';
 import { LancamentoContabilComponent } from './lancamento-contabil/lancamento-contabil.component';
 import { NovoLancamentoContabilComponent } from './lancamento-contabil/novo-lancamento-contabil/novo-lancamento-contabil.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lancamento.component';
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
@@ -38,7 +38,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [ConfirmationDialogService],
+  providers: [ConfirmationDialogService, NgbActiveModal],
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
 

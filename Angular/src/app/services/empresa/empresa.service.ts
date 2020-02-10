@@ -9,8 +9,6 @@ export class EmpresaService {
 
   constructor(private http: HttpClient) { }
 
-
-
   deletarEmpresa(id) {
     const url = `${environment.urlApi}/empresa/${id}/delete`;
 

@@ -3,7 +3,6 @@ import { LancamentoContabilService } from 'src/app/services/lancamento-contabil/
 import { FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
 import {
-  NgbCalendar,
   NgbDateAdapter,
   NgbDateStruct,
   NgbDateParserFormatter
@@ -91,9 +90,7 @@ export class NovoLancamentoContabilComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoContabilService,
-    private formBuilder: FormBuilder,
-    private ngbCalendar: NgbCalendar,
-     private dateAdapter: NgbDateAdapter<string>
+    private formBuilder: FormBuilder
   ){ 
     this.form = this.formBuilder.group({
       data: '',
