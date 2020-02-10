@@ -15,7 +15,7 @@ export class ContaService {
       Descricao,
       NumeroEstruturado,
       Grupo,
-      TipoConta, 
+      TipoConta,
       EmpresaID,
       ContaPai_ID
     }
@@ -31,7 +31,7 @@ export class ContaService {
 
   tipoContas() {
     const url = `${environment.urlApi}/tipo-conta`;
-    
+
     return new Promise((resolve, reject) => {
       this.http.get(url).subscribe((data: any) => {
         resolve(data);
@@ -63,5 +63,17 @@ export class ContaService {
         reject(err);
       })
     })
+  }
+
+  contasAnaliticas() {
+    const url = `${environment.urlApi}/contas-analiticas`;
+
+    return new Promise((resolve, reject) => {
+      this.http.get(url).subscribe((data: any) => {
+        resolve(data);
+      }, (err) => {
+        reject(err)
+      });
+    });
   }
 }

@@ -12,6 +12,8 @@ import { NovaEmpresaComponent } from './empresas/nova-empresa/nova-empresa.compo
 import { LancamentoContabilComponent } from './lancamento-contabil/lancamento-contabil.component';
 import { NovoLancamentoContabilComponent } from './lancamento-contabil/novo-lancamento-contabil/novo-lancamento-contabil.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lancamento.component';
+import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NovaEmpresaComponent,
     LancamentoContabilComponent,
     NovoLancamentoContabilComponent,
+    DetalhesLancamentoComponent,
+    NovoDetalheLancamentoComponent,
   ],
   imports: [
     BrowserModule,

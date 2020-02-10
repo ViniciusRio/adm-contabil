@@ -5,15 +5,22 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class LancamentoContabilService {
 
+export class DetalhesLancamentoService {
   constructor(private http: HttpClient) { }
 
-  addLancamento(data: string, historico: string) {
-    const url = `${environment.urlApi}/lancamentos`;
+  addDetalheLancamento(
+    Valor: number, 
+    Tipo: string,
+    LancamentoContabilID: number,
+    ContaAnaliticaID: number
+    ) {
+    const url = `${environment.urlApi}/detalhes-lancamento`;
     const arg = {
-      data,
-      historico
+      Valor,
+      Tipo,
+      LancamentoContabilID,
+      ContaAnaliticaID
     }
 
     return new Promise((resolve, reject) => {
@@ -25,8 +32,8 @@ export class LancamentoContabilService {
     });
   }
 
-  todosLancamentos() {
-    const url = `${environment.urlApi}/lancamentos`;
+  todosDetalhesLancamento() {
+    const url = `${environment.urlApi}/detalhes-lancamento`;
     
     return new Promise((resolve, reject) => {
       this.http.get(url).subscribe((data: any) => {
@@ -36,17 +43,5 @@ export class LancamentoContabilService {
       });
     });
   }
-
-  lancamentosContabeis() {
-    const url = `${environment.urlApi}/lancamentos-contabeis`;
-    
-    return new Promise((resolve, reject) => {
-      this.http.get(url).subscribe((data: any) => {
-        resolve(data);
-      }, (err) => {
-        reject(err)
-      });
-    });
-  }
-
+  
 }

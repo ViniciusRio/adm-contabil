@@ -44,19 +44,19 @@ export class NovaContaComponent implements OnInit {
   listarContasPai() {
     this.contaService.contaPai().then(resultado => {
       this.contasPai = resultado;
-    })
+    });
   }
 
   listarEmpresas() {
     this.empresaService.todasEmpresas().then(resultado => {
       this.empresas = resultado;
-    })
+    });
   }
 
   listarTipoContas() {
     this.contaService.tipoContas().then(resultado => {
       this.tiposContas = resultado;
-    })
+    });
   }
   listarGrupos() {
     this.grupoService.todosGrupos().then(resultado => {

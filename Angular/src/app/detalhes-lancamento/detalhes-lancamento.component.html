@@ -29,30 +29,33 @@
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Lançamentos</a>
+                    <a [routerLink]="['/detalhes-lancamento']">Detalhes dos Lançamentos</a>
                 </li>
                 <li class="breadcrumb-item active">Listagem</li>
             </ol>
             <div class="card mb-3">
                 <div class="card-header">
-                    <a [routerLink] = "['/novo-lancamento-contabil']" class="btn btn-success float-right"><i class="fas fa-plus"></i> Adicionar</a>
-                    <i class="fas fa-table"></i> Lançamentos cadastrados</div>
+                    <a [routerLink] = "['/novo-detalhe-lancamento']" class="btn btn-success float-right"><i class="fas fa-plus"></i> Adicionar</a>
+                    <i class="fas fa-table"></i> Detalhes cadastradas</div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Date</th>
-                                    <th>Historico</th>
+                                    <th>Valor</th>
+                                    <th>Tipo</th>
+                                    <th>Lançamento Contábil</th>
+                                    <th>Conta Analitica</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let lancamento of lancamentos">
-                                    <td>{{lancamento.ID }}</td>
-                                    <td>{{ converterData(lancamento.Data) }}</td>
-                                    <td>{{ lancamento.Historico }}</td>
-                                   
+                                <tr *ngFor="let detalhe of detalhes">
+                                    <td>{{ detalhe.ID }}</td>
+                                    <td>{{ detalhe.Valor | currency }}</td>
+                                    <td>{{ detalhe.Tipo }}</td>
+                                    <td>{{ detalhe.LancamentoContabil }}</td>
+                                    <td>{{ detalhe.ContaAnalitica }}</td>
                                 </tr>
                             </tbody>
                         </table>
