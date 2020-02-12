@@ -16,6 +16,8 @@ import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lanc
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AuthComponent } from './auth/auth.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     DetalhesLancamentoComponent,
     NovoDetalheLancamentoComponent,
     ConfirmationDialogComponent,
+    AuthComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
