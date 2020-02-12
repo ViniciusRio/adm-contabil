@@ -8,8 +8,8 @@ import { LancamentoContabilComponent } from './lancamento-contabil/lancamento-co
 import { NovoLancamentoContabilComponent } from './lancamento-contabil/novo-lancamento-contabil/novo-lancamento-contabil.component';
 import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lancamento.component';
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
-import { AuthComponent } from './auth/auth.component';
-import { RegistroComponent } from './registro/registro.component';
+import { RegistroComponent } from './auth/registro/registro.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 const routes: Routes = [
@@ -52,11 +52,11 @@ const routes: Routes = [
     component: NovoDetalheLancamentoComponent
   },
   {
-    path: 'auth',
-    component: AuthComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path: 'registrar',
+    path: 'registro',
     component: RegistroComponent
   }
 ];

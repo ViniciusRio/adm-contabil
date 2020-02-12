@@ -5,14 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Bank.Data.BancoContexto>
+    internal sealed class Configuration : DbMigrationsConfiguration<BankAPI.Data.BancoContexto>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Bank.Data.BancoContexto context)
+        protected override void Seed(BankAPI.Data.BancoContexto context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Bank.Models.Enums
+namespace BankAPI.Models.Enums
 {
     public enum Grupo
     {

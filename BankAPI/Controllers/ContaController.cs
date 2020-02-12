@@ -1,6 +1,4 @@
-﻿using Bank.Data;
-using Bank.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -10,8 +8,10 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
 using System.Web.Http.Cors;
-using Bank.Models.Enums;
 using System.Web.WebPages.Html;
+using BankAPI.Data;
+using BankAPI.Models;
+using BankAPI.Models.Enums;
 
 namespace BankAPI.Controllers
 {

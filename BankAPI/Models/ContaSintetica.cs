@@ -1,10 +1,10 @@
-﻿using Bank.Models.Enums;
+﻿using BankAPI.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Bank.Models
+namespace BankAPI.Models
 {
     public class ContaSintetica : Conta
     {

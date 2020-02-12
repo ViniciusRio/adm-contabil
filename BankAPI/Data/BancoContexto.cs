@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using Bank.Models;
+using BankAPI.Models;
 
-namespace Bank.Data
+namespace BankAPI.Data
 {
     public class BancoContexto : DbContext
     {
@@ -14,12 +14,14 @@ namespace Bank.Data
         {
         }
 
-        public DbSet<Bank.Models.Conta> Conta { get; set; }
-        public DbSet<Bank.Models.ContaSintetica> ContaSintetica { get; set; }
-        public DbSet<Bank.Models.ContaAnalitica> ContaAnalitica { get; set; }
-        public DbSet<Bank.Models.Empresa> Empresa { get; set; }
-        public DbSet<Bank.Models.LancamentoContabil> LancamentoContabil { get; set; }
-        public DbSet<Bank.Models.DetalheLancamento> DetalheLancamento { get; set; }
+        public DbSet<Conta> Conta { get; set; }
+        public DbSet<ContaSintetica> ContaSintetica { get; set; }
+        public DbSet<ContaAnalitica> ContaAnalitica { get; set; }
+        public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<LancamentoContabil> LancamentoContabil { get; set; }
+        public DbSet<DetalheLancamento> DetalheLancamento { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

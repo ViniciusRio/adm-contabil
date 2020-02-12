@@ -1,4 +1,4 @@
-﻿using Bank.Models.Enums;
+﻿using BankAPI.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

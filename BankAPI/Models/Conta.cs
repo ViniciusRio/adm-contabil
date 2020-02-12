@@ -1,4 +1,4 @@
-﻿using Bank.Models.Enums;
+﻿using BankAPI.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Bank.Models
+namespace BankAPI.Models
 {
     public abstract class Conta
     {

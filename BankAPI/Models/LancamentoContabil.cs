@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Bank.Models
+namespace BankAPI.Models
 {
     public class LancamentoContabil
     {

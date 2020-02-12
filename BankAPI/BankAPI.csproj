@@ -213,6 +213,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DetalheLancamentoController.cs" />
     <Compile Include="Controllers\LancamentoContabilController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data\BancoContexto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +221,10 @@
     <Compile Include="Migrations\202002101958149_initial.cs" />
     <Compile Include="Migrations\202002101958149_initial.designer.cs">
       <DependentUpon>202002101958149_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121556294_user.cs" />
+    <Compile Include="Migrations\202002121556294_user.designer.cs">
+      <DependentUpon>202002121556294_user.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Conta.cs" />
@@ -232,6 +237,7 @@
     <Compile Include="Models\DetalheLancamento.cs" />
     <Compile Include="Models\LancamentoContabil.cs" />
     <Compile Include="Models\Pessoa.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
@@ -308,6 +314,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002101958149_initial.resx">
       <DependentUpon>202002101958149_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121556294_user.resx">
+      <DependentUpon>202002121556294_user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

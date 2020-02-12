@@ -11,13 +11,15 @@ import { EmpresasComponent } from './empresas/empresas.component';
 import { NovaEmpresaComponent } from './empresas/nova-empresa/nova-empresa.component';
 import { LancamentoContabilComponent } from './lancamento-contabil/lancamento-contabil.component';
 import { NovoLancamentoContabilComponent } from './lancamento-contabil/novo-lancamento-contabil/novo-lancamento-contabil.component';
-import { NgbModule, NgbActiveModal, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lancamento.component';
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { AuthComponent } from './auth/auth.component';
-import { RegistroComponent } from './registro/registro.component';
+import { RegistroComponent } from './auth/registro/registro.component';
+import { LoginComponent } from './auth/login/login.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +33,8 @@ import { RegistroComponent } from './registro/registro.component';
     DetalhesLancamentoComponent,
     NovoDetalheLancamentoComponent,
     ConfirmationDialogComponent,
-    AuthComponent,
     RegistroComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { RegistroComponent } from './registro/registro.component';
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [ConfirmationDialogService, NgbActiveModal],
+  providers: [ConfirmationDialogService, NgbActiveModal, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
 

@@ -1,5 +1,6 @@
-﻿using Bank.Data;
-using Bank.Models;
+﻿using BankAPI.Data;
+using BankAPI.Models;
+using BankAPI.Models.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

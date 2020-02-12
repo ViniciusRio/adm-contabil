@@ -23,6 +23,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "ngx-cookie-service": "^2.3.0",
     "rxjs": "~6.4.0",
     "startbootstrap-sb-admin": "^5.1.1",
     "tslib": "^1.10.0",

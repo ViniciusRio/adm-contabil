@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContaService } from '../services/conta/conta.service';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-contas',
@@ -9,14 +10,25 @@ import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-d
 })
 export class ContasComponent implements OnInit {
   contas;
+  cookieValue;
 
   constructor(
     private contaService: ContaService,
-    private confirmationDialogService: ConfirmationDialogService
+    private confirmationDialogService: ConfirmationDialogService,
+    private authService: AuthService
     ) { }
 
   ngOnInit() {
     this.onListarContas();
+    this.getCookie();
+  }
+
+  getCookie()
+  {
+    this.authService.login().then(resultado => {
+      this.cookieValue = resultado;
+    })
+    
   }
 
   onDeletarConta(id) {
