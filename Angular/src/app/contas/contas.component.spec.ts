@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContasComponent } from './contas.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('ContasComponent', () => {
   let component: ContasComponent;
@@ -8,7 +9,8 @@ describe('ContasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContasComponent ]
+      declarations: [ ContasComponent ],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
   }));
@@ -22,4 +24,8 @@ describe('ContasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('cannot be empty', () => {
+    expect(component.contas).toBeGreaterThan(1);
+  })
 });

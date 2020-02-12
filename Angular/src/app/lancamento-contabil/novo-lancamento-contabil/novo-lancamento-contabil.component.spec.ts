@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NovoLancamentoContabilComponent } from './novo-lancamento-contabil.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 describe('NovoLancamentoContabilComponent', () => {
   let component: NovoLancamentoContabilComponent;
@@ -8,7 +12,12 @@ describe('NovoLancamentoContabilComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NovoLancamentoContabilComponent ]
+      declarations: [ NovoLancamentoContabilComponent ],
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule,
+        NgbModule
+      ]
     })
     .compileComponents();
   }));

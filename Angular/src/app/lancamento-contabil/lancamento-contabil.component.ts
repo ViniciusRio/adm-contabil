@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LancamentoContabilService } from '../services/lancamento-contabil/lancamento-contabil.service';
 import * as moment from 'moment';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-lancamento-contabil',
@@ -12,7 +13,10 @@ export class LancamentoContabilComponent implements OnInit {
   now = moment().format('dddd');
 
 
-  constructor(private lancamentoService: LancamentoContabilService) { }
+  constructor(
+    private lancamentoService: LancamentoContabilService,
+    private confirmationDialogService: ConfirmationDialogService
+    ) { }
 
   ngOnInit() {
     this.listarLancamentos();
@@ -23,10 +27,20 @@ export class LancamentoContabilComponent implements OnInit {
     return moment(dataAntiga, "YYYY/MM/DD").format("DD/MM/YYYY");
   }
   
+  onDeletarLancamento(id) {
+    this.confirmationDialogService.confirm('Deseja realmente excluir?', 'Ação não poderá ser desfeita.')
+    .then(() => {
+      this.lancamentoService.deletarLancamento(id).then(() => {
+        this.listarLancamentos();
+      });
+    })
+    .catch();
+    
+  }
+
   listarLancamentos() {
     this.lancamentoService.todosLancamentos().then(resultado => {
       this.lancamentos = resultado;
-      console.log("LANÇAMENTOS: ", this.lancamentos);
     });
   }
 }

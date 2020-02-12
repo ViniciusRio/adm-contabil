@@ -6,7 +6,6 @@ import { EmpresasComponent } from './empresas/empresas.component';
 import { NovaEmpresaComponent } from './empresas/nova-empresa/nova-empresa.component';
 import { LancamentoContabilComponent } from './lancamento-contabil/lancamento-contabil.component';
 import { NovoLancamentoContabilComponent } from './lancamento-contabil/novo-lancamento-contabil/novo-lancamento-contabil.component';
-import { DetalhesLancamentoService } from './services/detalhes-lancamento/detalhes-lancamento.service';
 import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lancamento.component';
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
 

@@ -46,5 +46,31 @@ namespace BankAPI.Controllers
             return selectLista;
 
         }
+
+        [Route("api/empresa/{id}/delete")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            var item = _contexto.Empresa.FirstOrDefault(empresa => empresa.EmpresaID == id);
+
+            if (item == null)
+            {
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound, "Empresa não encontrada");
+
+                return response;
+
+            }
+
+
+            foreach (var itemConta in _contexto.Conta.Where(f => f.EmpresaID == item.EmpresaID))
+            {
+                _contexto.Conta.Remove(itemConta);
+            }
+
+            _contexto.Empresa.Remove(item);
+            _contexto.SaveChanges();
+
+            return Request.CreateResponse(HttpStatusCode.OK, "Empresa excluída");
+        }
     }  
 }

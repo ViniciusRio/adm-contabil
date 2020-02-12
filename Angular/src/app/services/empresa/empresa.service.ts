@@ -9,7 +9,18 @@ export class EmpresaService {
 
   constructor(private http: HttpClient) { }
 
+  deletarEmpresa(id) {
+    const url = `${environment.urlApi}/empresa/${id}/delete`;
 
+    return new Promise((resolve, reject) => {
+      this.http.delete(url).subscribe((data: any) => {
+        resolve(data);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+  
   addEmpresa(razaoSocial: string) {
     const url = `${environment.urlApi}/empresas`;
     const arg = {

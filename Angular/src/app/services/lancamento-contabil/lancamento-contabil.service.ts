@@ -9,6 +9,18 @@ export class LancamentoContabilService {
 
   constructor(private http: HttpClient) { }
 
+  deletarLancamento(id) {
+    const url = `${environment.urlApi}/lancamento/${id}/delete`;
+
+    return new Promise((resolve, reject) => {
+      this.http.delete(url).subscribe((data: any) => {
+        resolve(data);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
   addLancamento(data: string, historico: string) {
     const url = `${environment.urlApi}/lancamentos`;
     const arg = {
