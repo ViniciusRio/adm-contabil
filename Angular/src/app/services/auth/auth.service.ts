@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Usuario } from 'src/app/auth/registro/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
 
   
-  login(usuario) {
+  login(usuario: Usuario) {
     const url = `${environment.urlApi}/login`;
     const arg = {
       usuario

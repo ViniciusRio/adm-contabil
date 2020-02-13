@@ -45,8 +45,9 @@ namespace BankAPI.Controllers
             if (usuarioItem != null)
             {
 
+                var cookie = new HttpCookie("guid", Guid.NewGuid().ToString());
+                HttpContext.Current.Response.Cookies.Add(cookie);
 
-                HttpContext.Current.Response.Cookies.Add(new HttpCookie("guid", Guid.NewGuid().ToString()));
                 response = Request.CreateResponse(HttpContext.Current.Request.Cookies["guid"].Value);
 
                 //var resp = new HttpResponseMessage();
@@ -72,13 +73,13 @@ namespace BankAPI.Controllers
 
                 //var resp = new HttpResponseMessage();
 
-                //var cookie = new CookieHeaderValue("teste-cookie", "12345");
+                //var cookie = new CookieHeaderValue("item", Guid.NewGuid().ToString());
                 //cookie.Expires = DateTimeOffset.Now.AddDays(1);
-                //cookie.Domain = Request.RequestUri.Host;
+                //cookie.Domain = "http://localhost:51159/";
                 //cookie.Path = "/";
-                //cookie.Domain = "http://localhost:4200";
 
                 //resp.Headers.AddCookies(new CookieHeaderValue[] { cookie });
+
                 //return resp;
                 return response;
 

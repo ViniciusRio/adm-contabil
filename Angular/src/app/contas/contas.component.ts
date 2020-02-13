@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ContaService } from '../services/conta/conta.service';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { AuthService } from '../services/auth/auth.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
   selector: 'app-contas',
@@ -11,24 +13,27 @@ import { AuthService } from '../services/auth/auth.service';
 export class ContasComponent implements OnInit {
   contas;
   cookieValue;
+  cookieValue2;
+  valueCo;
+
+
+  @ViewChild(LoginComponent, null) child;
+
 
   constructor(
     private contaService: ContaService,
     private confirmationDialogService: ConfirmationDialogService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cookieService: CookieService
     ) { }
 
   ngOnInit() {
     this.onListarContas();
-    this.getCookie();
   }
 
-  getCookie()
-  {
-    this.authService.login().then(resultado => {
-      this.cookieValue = resultado;
-    })
-    
+  ngAfterViewInit() {
+    this.valueCo = this.child.valueCo
+    console.log("value conta child: ", this.valueCo);
   }
 
   onDeletarConta(id) {
