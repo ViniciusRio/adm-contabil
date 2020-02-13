@@ -10,16 +10,20 @@ import { DetalhesLancamentoComponent } from './detalhes-lancamento/detalhes-lanc
 import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detalhe-lancamento/novo-detalhe-lancamento.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     component: ContasComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'contas',
-        component: ContasComponent
+        component: ContasComponent,
+        canActivate: [AuthGuard]
+
       }
     ]
   },
@@ -29,7 +33,9 @@ const routes: Routes = [
   },
   {
     path: 'empresas',
-    component: EmpresasComponent
+    component: EmpresasComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'nova-empresa',

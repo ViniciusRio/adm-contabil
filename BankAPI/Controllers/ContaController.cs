@@ -12,6 +12,7 @@ using System.Web.WebPages.Html;
 using BankAPI.Data;
 using BankAPI.Models;
 using BankAPI.Models.Enums;
+using System.Web;
 
 namespace BankAPI.Controllers
 {
@@ -24,6 +25,9 @@ namespace BankAPI.Controllers
         [HttpGet]
         public dynamic Index()
         {
+
+            var url = Request.RequestUri;
+            string token = HttpUtility.ParseQueryString(url.Query).Get("token");
 
             var contas = ((from a in _contexto.Conta select a).AsEnumerable().Select(t => new
             {

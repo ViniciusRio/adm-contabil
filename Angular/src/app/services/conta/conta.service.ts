@@ -51,9 +51,12 @@ export class ContaService {
 
   todasContas() {
     const url = `${environment.urlApi}/contas`;
+    const params = {
+      token: localStorage.getItem('value')
+    };
 
     return new Promise((resolve, reject) => {
-      this.http.get(url).subscribe((data: any) => {
+      this.http.get(url, { params }).subscribe((data: any) => {
         resolve(data);
       }, (err) => {
         reject(err);

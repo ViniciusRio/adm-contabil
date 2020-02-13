@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form;
-  valueCo;
 
   constructor(
     private authService: AuthService,
@@ -32,11 +31,9 @@ export class LoginComponent implements OnInit {
       Senha: this.form.value.senha
     }
 
-    this.authService.login(usuario).then(resulado => {
-      this.valueCo = resulado;
-      console.log("login: ", this.valueCo);
+    this.authService.login(usuario).then(() => {
       this.router.navigateByUrl('/contas');
-    })
+    });
   }
 
 }

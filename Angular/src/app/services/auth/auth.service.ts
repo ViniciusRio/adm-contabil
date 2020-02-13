@@ -8,7 +8,25 @@ import { Usuario } from 'src/app/auth/registro/usuario';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  private userAuthenticate;
+  // tslint:disable-next-line: variable-name
+  local = null;
+
+  get userAuth() {
+    console.log("auth: ", this.userAuthenticate);
+    return this.userAuthenticate;
+  }
+
+  constructor(private http: HttpClient) {
+    this.local = localStorage.getItem('value');
+    console.log("local construtor: ", this.local);
+
+    if(this.local != null) {
+      this.userAuthenticate = true;
+    } else {
+      this.userAuthenticate = false;
+    }
+   }
 
 
   
@@ -20,6 +38,10 @@ export class AuthService {
 
     return new Promise((resolve, reject) => {
       this.http.post(url, arg).subscribe((data: any) => {
+        if (data.hasOwnProperty('Value')) {
+          localStorage.setItem('value', data.Value);
+        }
+        this.userAuthenticate = true;
         resolve(data);
       }, (err) => {
         reject(err);

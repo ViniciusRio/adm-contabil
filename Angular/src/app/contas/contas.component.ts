@@ -13,12 +13,7 @@ import { LoginComponent } from '../auth/login/login.component';
 export class ContasComponent implements OnInit {
   contas;
   cookieValue;
-  cookieValue2;
-  valueCo;
-
-
-  @ViewChild(LoginComponent, null) child;
-
+  valueLocalStorage;
 
   constructor(
     private contaService: ContaService,
@@ -29,11 +24,9 @@ export class ContasComponent implements OnInit {
 
   ngOnInit() {
     this.onListarContas();
-  }
+    this.valueLocalStorage = localStorage.getItem('value');
+    console.log("contas auth: ", this.authService.userAuth);
 
-  ngAfterViewInit() {
-    this.valueCo = this.child.valueCo
-    console.log("value conta child: ", this.valueCo);
   }
 
   onDeletarConta(id) {
