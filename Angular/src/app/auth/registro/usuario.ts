@@ -1,4 +1,5 @@
 export interface Usuario {
     Nome: string,
-    Senha: string
+    Senha: string,
+    IsAdmin: boolean
 }

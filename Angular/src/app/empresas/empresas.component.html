@@ -19,7 +19,7 @@
                 <i class="fas fa-money-bill-alt"></i>
                 <span> Lançamentos Contábeis</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="valueLocalStorage">
             <a class="nav-link" routerLink="/detalhes-lancamento">
                 <i class="fas fa-money-bill-alt"></i>
                 <span> Detalhes dos Lançamentos</span></a>
@@ -44,7 +44,7 @@
                             Nenhuma empresa cadastrada.
                         </div>
                     </div>
-                    <div *ngIf="empresas.length > 0">
+                    <div *ngIf="empresas && empresas.length > 0">
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>

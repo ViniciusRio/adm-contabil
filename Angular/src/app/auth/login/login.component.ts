@@ -28,11 +28,12 @@ export class LoginComponent implements OnInit {
   onLogin() {
     const usuario = {
       Nome: this.form.value.email,
-      Senha: this.form.value.senha
+      Senha: this.form.value.senha,
+      IsAdmin: false
     }
 
     this.authService.login(usuario).then(() => {
-      this.router.navigateByUrl('/contas');
+      this.router.navigateByUrl('/home');
     });
   }
 

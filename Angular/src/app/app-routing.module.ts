@@ -11,6 +11,7 @@ import { NovoDetalheLancamentoComponent } from './detalhes-lancamento/novo-detal
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -33,8 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'empresas',
-    component: EmpresasComponent,
-    canActivate: [AuthGuard]
+    component: EmpresasComponent
 
   },
   {
@@ -51,11 +51,16 @@ const routes: Routes = [
   },
   {
     path: 'detalhes-lancamento',
-    component: DetalhesLancamentoComponent
+    component: DetalhesLancamentoComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'novo-detalhe-lancamento',
     component: NovoDetalheLancamentoComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'login',

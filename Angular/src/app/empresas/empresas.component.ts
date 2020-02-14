@@ -9,13 +9,16 @@ import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-d
 })
 export class EmpresasComponent implements OnInit {
   empresas;
-
+  valueLocalStorage;
+  
   constructor(
     private empresaService: EmpresaService,
     private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit() {
     this.listarEmpresas();
+    this.valueLocalStorage = localStorage.getItem('value');
+
   }
   onDeletarEmpresa(id) {
     this.confirmationDialogService.confirm('Deseja realmente excluir?', 'Contas associadas também serão Ação não poderá ser desfeita.')

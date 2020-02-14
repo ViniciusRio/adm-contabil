@@ -45,7 +45,7 @@
                         ContaAnaliticaID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.ContaAnalitica", t => t.ContaAnaliticaID, cascadeDelete: true)
+                .ForeignKey("dbo.ContaAnalitica", t => t.ContaAnaliticaID)
                 .ForeignKey("dbo.LancamentoContabil", t => t.LancamentoContabilID, cascadeDelete: true)
                 .Index(t => t.LancamentoContabilID)
                 .Index(t => t.ContaAnaliticaID);
@@ -57,6 +57,29 @@
                         ID = c.Int(nullable: false, identity: true),
                         Data = c.DateTime(nullable: false),
                         Historico = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.SessaoAtiva",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Token = c.String(),
+                        UsuarioID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Usuario", t => t.UsuarioID, cascadeDelete: true)
+                .Index(t => t.UsuarioID);
+            
+            CreateTable(
+                "dbo.Usuario",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
+                        Senha = c.String(),
+                        IsAdmin = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -87,18 +110,22 @@
         {
             DropForeignKey("dbo.ContaSintetica", "ID", "dbo.Conta");
             DropForeignKey("dbo.ContaAnalitica", "ID", "dbo.Conta");
+            DropForeignKey("dbo.SessaoAtiva", "UsuarioID", "dbo.Usuario");
             DropForeignKey("dbo.DetalheLancamento", "LancamentoContabilID", "dbo.LancamentoContabil");
             DropForeignKey("dbo.DetalheLancamento", "ContaAnaliticaID", "dbo.ContaAnalitica");
             DropForeignKey("dbo.Conta", "EmpresaID", "dbo.Empresa");
             DropForeignKey("dbo.Conta", "ContaPai_ID", "dbo.Conta");
             DropIndex("dbo.ContaSintetica", new[] { "ID" });
             DropIndex("dbo.ContaAnalitica", new[] { "ID" });
+            DropIndex("dbo.SessaoAtiva", new[] { "UsuarioID" });
             DropIndex("dbo.DetalheLancamento", new[] { "ContaAnaliticaID" });
             DropIndex("dbo.DetalheLancamento", new[] { "LancamentoContabilID" });
             DropIndex("dbo.Conta", new[] { "ContaPai_ID" });
             DropIndex("dbo.Conta", new[] { "EmpresaID" });
             DropTable("dbo.ContaSintetica");
             DropTable("dbo.ContaAnalitica");
+            DropTable("dbo.Usuario");
+            DropTable("dbo.SessaoAtiva");
             DropTable("dbo.LancamentoContabil");
             DropTable("dbo.DetalheLancamento");
             DropTable("dbo.Empresa");

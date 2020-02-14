@@ -19,6 +19,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
 import { CookieService } from 'ngx-cookie-service';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CookieService } from 'ngx-cookie-service';
     ConfirmationDialogComponent,
     RegistroComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

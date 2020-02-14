@@ -25,23 +25,29 @@ namespace BankAPI.Controllers
         [HttpGet]
         public dynamic Index()
         {
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized, "Não autorizado");
 
             var url = Request.RequestUri;
             string token = HttpUtility.ParseQueryString(url.Query).Get("token");
-
-            var contas = ((from a in _contexto.Conta select a).AsEnumerable().Select(t => new
+            var sessaoValida = _contexto.SessaoAtiva.FirstOrDefault(s => s.Token == token);
+            if (sessaoValida != null)
             {
-                ID = t.ID,
-                Descricao = t.Descricao,
-                Empresa = t.Empresa,
-                TipoConta = Enum.GetName(typeof(TipoConta), t.TipoConta),
-                Grupo = Enum.GetName(typeof(Grupo), t.Grupo),
-                NumeroEstruturado = t.NumeroEstruturado,
-                ContaPai = t.ContaPai == null ? null : t.ContaPai.Descricao
+                var contas = ((from a in _contexto.Conta select a).AsEnumerable().Select(t => new
+                {
+                    ID = t.ID,
+                    Descricao = t.Descricao,
+                    Empresa = t.Empresa,
+                    TipoConta = Enum.GetName(typeof(TipoConta), t.TipoConta),
+                    Grupo = Enum.GetName(typeof(Grupo), t.Grupo),
+                    NumeroEstruturado = t.NumeroEstruturado,
+                    ContaPai = t.ContaPai == null ? null : t.ContaPai.Descricao
 
-            }).ToList());
+                }).ToList());
 
-            return contas;
+                return contas;
+            }
+
+            return response;
 
         }
 

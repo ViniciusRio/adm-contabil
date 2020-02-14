@@ -46,11 +46,16 @@ namespace BankAPI.Controllers
             if (usuarioItem != null)
             {
                 var cookie = new HttpCookie("guid", Guid.NewGuid().ToString());
-                cookie.Domain = "localhost:4200";
-                cookie.Path = "/";
+                if (usuarioItem.IsAdmin)
+                {
+                    cookie.Values["admin"] = "1";
+                }
                 HttpContext.Current.Response.Cookies.Add(cookie);
-
                 response = Request.CreateResponse(HttpContext.Current.Request.Cookies["guid"]);
+
+                SessaoAtiva novaSessao = new SessaoAtiva(cookie.Value, usuarioItem.ID);
+                _contexto.SessaoAtiva.Add(novaSessao);
+                _contexto.SaveChanges();
 
             }
 

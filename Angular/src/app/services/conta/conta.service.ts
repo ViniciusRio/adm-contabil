@@ -59,9 +59,9 @@ export class ContaService {
       this.http.get(url, { params }).subscribe((data: any) => {
         resolve(data);
       }, (err) => {
-        reject(err);
-      })
-    })
+        reject(err.error);
+      });
+    });
   }
 
   contaPai() {

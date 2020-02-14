@@ -21,6 +21,8 @@ namespace BankAPI.Data
         public DbSet<LancamentoContabil> LancamentoContabil { get; set; }
         public DbSet<DetalheLancamento> DetalheLancamento { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<SessaoAtiva> SessaoAtiva { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -31,6 +33,9 @@ namespace BankAPI.Data
             modelBuilder.Entity<Empresa>().ToTable("Empresa");
             modelBuilder.Entity<LancamentoContabil>().ToTable("LancamentoContabil");
             modelBuilder.Entity<DetalheLancamento>().ToTable("DetalheLancamento");
+            modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            modelBuilder.Entity<SessaoAtiva>().ToTable("SessaoAtiva");
+
 
         }
     }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" routerLink="/contas">Administração Contábil</a>
+    <a class="navbar-brand mr-1" routerLink="/home">Administração Contábil</a>
 </nav>
 <div id="wrapper">
     <ul class="sidebar navbar-nav">
@@ -20,7 +20,7 @@
                 <span> Lançamentos Contábeis</span></a>
         </li>
         <li class="nav-item" *ngIf="valueLocalStorage">
-            <a class="nav-link" routerLink="detalhes-lancamento">
+            <a class="nav-link" routerLink="/detalhes-lancamento">
                 <i class="fas fa-money-bill-alt"></i>
                 <span> Detalhes dos Lançamentos</span></a>
         </li>
@@ -41,8 +41,11 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <div *ngIf="!contas || contas.length <= 0">
-                            <div class="alert alert-info" role="alert">
+                            <div *ngIf="!errorMsg" class="alert alert-info" role="alert">
                                 Nenhuma conta cadastrada.
+                            </div>
+                            <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+                                {{ errorMsg }}
                             </div>
                         </div>
                         <div *ngIf="contas && contas.length > 0">
@@ -68,7 +71,7 @@
                                         <td>{{ conta.Grupo }}</td>
                                         <td>{{ conta.NumeroEstruturado }}</td>
                                         <td>{{ conta.ContaPai && conta.ContaPai || '-' }}</td>
-                                        <td>
+                                        <td *ngIf="isAdmin">
                                             <button type="submit" (click)="onDeletarConta(conta.ID)"
                                                 class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         </td>

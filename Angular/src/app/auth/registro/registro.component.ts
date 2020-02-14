@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
   form
+
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -17,7 +18,8 @@ export class RegistroComponent implements OnInit {
     ) { 
       this.form = this.formBuilder.group({
         email: '',
-        senha: ''
+        senha: '',
+        isAdmin: false
       });
     }
 
@@ -27,11 +29,12 @@ export class RegistroComponent implements OnInit {
   criarRegistro() {
     const usuario = {
       Nome: this.form.value.email,
-      Senha: this.form.value.senha
+      Senha: this.form.value.senha,
+      IsAdmin: this.form.value.isAdmin
     }
 
     this.authService.registro(usuario).then(() => {
-      this.router.navigateByUrl('/contas');
+      this.router.navigateByUrl('/home');
     })
   }
 }

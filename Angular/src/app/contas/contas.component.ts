@@ -14,6 +14,8 @@ export class ContasComponent implements OnInit {
   contas;
   cookieValue;
   valueLocalStorage;
+  errorMsg;
+  isAdmin;
 
   constructor(
     private contaService: ContaService,
@@ -25,8 +27,6 @@ export class ContasComponent implements OnInit {
   ngOnInit() {
     this.onListarContas();
     this.valueLocalStorage = localStorage.getItem('value');
-    console.log("contas auth: ", this.authService.userAuth);
-
   }
 
   onDeletarConta(id) {
@@ -37,11 +37,13 @@ export class ContasComponent implements OnInit {
       });
     })
     .catch();
-    
   }
   onListarContas() {
     this.contaService.todasContas().then(resultado => {
+      this.isAdmin = localStorage.getItem('admin');
       this.contas = resultado;
+    }, err => {
+      this.errorMsg = err;
     });
   }
 
