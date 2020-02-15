@@ -1,9 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContaService } from '../services/conta/conta.service';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
-import { AuthService } from '../services/auth/auth.service';
-import { CookieService } from 'ngx-cookie-service';
-import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
   selector: 'app-contas',
@@ -20,8 +17,6 @@ export class ContasComponent implements OnInit {
   constructor(
     private contaService: ContaService,
     private confirmationDialogService: ConfirmationDialogService,
-    private authService: AuthService,
-    private cookieService: CookieService
     ) { }
 
   ngOnInit() {
