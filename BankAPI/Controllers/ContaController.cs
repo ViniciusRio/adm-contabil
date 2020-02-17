@@ -21,6 +21,7 @@ namespace BankAPI.Controllers
     {
         private BancoContexto _contexto = new BancoContexto();
 
+        [Authorize]
         [Route("api/contas")]
         [HttpGet]
         public dynamic Index()
