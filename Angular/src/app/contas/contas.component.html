@@ -44,7 +44,7 @@
                             <td>{{ conta.Grupo }}</td>
                             <td>{{ conta.NumeroEstruturado }}</td>
                             <td>{{ conta.ContaPai && conta.ContaPai || '-' }}</td>
-                            <td *ngIf="isAdmin" width="50px">
+                            <td width="50px">
                                 <button type="submit" (click)="onDeletarConta(conta.ID)" class="btn btn-danger"><i
                                         class="fas fa-trash"></i></button>
                             </td>

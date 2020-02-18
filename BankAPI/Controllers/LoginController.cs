@@ -40,58 +40,44 @@ namespace BankAPI.Controllers
 
         [Route("api/login")]
         [HttpPost]
-        public HttpResponseMessage Login(JObject item)
+        public Object Login(JObject item)
         {
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "Login não efetuado");
             Usuario usuario = JsonConvert.DeserializeObject<Usuario>(item["usuario"].ToString());
 
-            var usuarioItem = _contexto.Usuario.FirstOrDefault(u => u.Nome == usuario.Nome);
+            var usuarioItem = _contexto.Usuario.FirstOrDefault(u => u.Senha == usuario.Senha && u.Nome == usuario.Nome);
 
             if (usuarioItem != null)
             {
-                var cookie = new HttpCookie("guid", Guid.NewGuid().ToString());
-                if (usuarioItem.IsAdmin)
-                {
-                    cookie.Values["admin"] = "1";
-                }
-                HttpContext.Current.Response.Cookies.Add(cookie);
-                response = Request.CreateResponse(HttpContext.Current.Request.Cookies["guid"]);
+                string key = "coB_mtdXwvi9RxSMzbIey8GVVQLv9qQrBUqmc1qj9Bs";    
+                var issuer = "http://localhost:4200/";
 
-                SessaoAtiva novaSessao = new SessaoAtiva(cookie.Value, usuarioItem.ID);
-                _contexto.SessaoAtiva.Add(novaSessao);
-                _contexto.SaveChanges();
+                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+                var permClaims = new List<Claim>();
+                permClaims.Add(new Claim(JwtRegisteredClaimNames.Sub, usuarioItem.ID.ToString()));
+                permClaims.Add(new Claim("name", usuarioItem.Nome));
+                permClaims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString()));
+                permClaims.Add(new Claim("admin", usuarioItem.IsAdmin.ToString()));
+
+
+                //Create Security Token object by giving required parameters    
+                var token = new JwtSecurityToken(issuer, //Issure    
+                                issuer,  //Audience    
+                                permClaims,
+                                expires: DateTime.Now.AddDays(1),
+                                signingCredentials: credentials);
+                var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
+
+                //response = Request.CreateResponse("token", jwt_token);
+                return new { token = jwt_token };
 
             }
 
             return response;
         }
 
-        [Route("api/token")]
-        [HttpGet]
-        public Object GetToken()
-        {
-            string key = "m7MEsIg8Hu-JeeMF1N44NFwpwAx7sx0aaIDOCnzZtHw"; //Secret key which will be used later during validation    
-            var issuer = "http://localhost:4200/";  //normally this will be your site URL    
-
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            //Create a List of Claims, Keep claims name short    
-            var permClaims = new List<Claim>();
-            permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            permClaims.Add(new Claim("valid", "1"));
-            permClaims.Add(new Claim("userid", "1"));
-            permClaims.Add(new Claim("name", "bilal"));
-
-            //Create Security Token object by giving required parameters    
-            var token = new JwtSecurityToken(issuer, //Issure    
-                            issuer,  //Audience    
-                            permClaims,
-                            expires: DateTime.Now.AddDays(1),
-                            signingCredentials: credentials);
-            var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
-            return new { data = jwt_token };
-        }
 
         [Route("api/tokenjwt")]
         [HttpGet]
@@ -100,7 +86,7 @@ namespace BankAPI.Controllers
             var issuer = "http://localhost:51159";
             var audience = "http://localhost:4200";
             var expiry = DateTime.Now.AddMinutes(120);
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("m7MEsIg8Hu-JeeMF1N44NFwpwAx7sx0aaIDOCnzZtHw"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("coB_mtdXwvi9RxSMzbIey8GVVQLv9qQrBUqmc1qj9Bs"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(issuer: issuer, audience: audience,
             expires: DateTime.Now.AddMinutes(120), signingCredentials: credentials);

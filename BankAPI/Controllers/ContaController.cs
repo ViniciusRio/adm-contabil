@@ -13,6 +13,12 @@ using BankAPI.Data;
 using BankAPI.Models;
 using BankAPI.Models.Enums;
 using System.Web;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.IdentityModel.Logging;
+using System.Security.Cryptography.X509Certificates;
+using BankAPI.Models;
 
 namespace BankAPI.Controllers
 {
@@ -21,17 +27,16 @@ namespace BankAPI.Controllers
     {
         private BancoContexto _contexto = new BancoContexto();
 
-        [Authorize]
         [Route("api/contas")]
         [HttpGet]
         public dynamic Index()
         {
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized, "Não autorizado");
 
-            var url = Request.RequestUri;
-            string token = HttpUtility.ParseQueryString(url.Query).Get("token");
-            var sessaoValida = _contexto.SessaoAtiva.FirstOrDefault(s => s.Token == token);
-            if (sessaoValida != null)
+            SecurityToken validatedToken;
+            bool tokenValido = ResponseJWT.ResponseToken(Request, out validatedToken);
+
+            if (tokenValido)
             {
                 var contas = ((from a in _contexto.Conta select a).AsEnumerable().Select(t => new
                 {

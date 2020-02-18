@@ -36,14 +36,9 @@ export class AuthService {
 
     return new Promise((resolve, reject) => {
       this.http.post(url, arg).subscribe((data: any) => {
-        if (data.hasOwnProperty('Value')) {
-          localStorage.clear();
-          localStorage.setItem('value', data.Value);
-          var values = data.Values;
-          if (values[1])
-          {
-            localStorage.setItem('admin', "1");
-          }
+        if (data.hasOwnProperty('token')) {
+          localStorage.setItem('token', data.token);
+          this.userAuthenticate = true;
         }
 
         this.userAuthenticate = true;

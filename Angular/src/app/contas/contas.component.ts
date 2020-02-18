@@ -35,7 +35,6 @@ export class ContasComponent implements OnInit {
   }
   onListarContas() {
     this.contaService.todasContas().then(resultado => {
-      this.isAdmin = localStorage.getItem('admin');
       this.contas = resultado;
     }, err => {
       this.errorMsg = err;
